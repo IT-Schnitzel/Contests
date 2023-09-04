@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int currmax = 0;
+        int [] [] map = new int [n] [n];
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                map [i] [j] = 0;
+            }
+        }
+        for (int i = 0; i < m; i++)
+        {
+            int a = in.nextInt();
+            int b = in.nextInt();
+            int height = in.nextInt();
+            map [a - 1] [b - 1] = height;
+            map [b - 1] [a - 1] = height;
+            if (height > currmax)
+            {
+                currmax = height;
+            }
+        }
+        int min = 0;
+        int max = currmax;
+        int ans = currmax;
+        int curr = (min + max) / 2;
+        while (min < max)
+        {
+            if (NotDrowned(map, curr))
+            {
+                min = curr + 1;
+            }
+            else {
+                ans = curr;
+                max = curr -1;
+            }
+            curr = (min + max) / 2;
+        }
+        System.out.println(ans);
+    }
+
+
+    public static void IsConnected(int[][] map, boolean[] visited, int start, int height, int len)
+    {
+        visited[start] = true;
+        for (int i = 0; i < len; i++) {
+            if (map[start][i] > height && !visited[i]) {
+                IsConnected(map, visited, i, height, len);
+            }
+        }
+    }
+
+    public static boolean NotDrowned(int[][] map, int height)
+    {
+        int len = map.length;
+        boolean[] visited = new boolean[len];
+        IsConnected(map, visited, 0, height,len);
+        boolean flag = true;
+        for (int i = 0; i < len; i++)
+        {
+            if (!visited[i])
+            {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+}
