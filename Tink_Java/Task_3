@@ -1,0 +1,21 @@
+n = int(input())
+lis = list(map(int,input().split()))
+m = int(input())
+lisn =[[0] * 2] * m
+for i in range(m):
+    lisn[i] = list(map(int,input().split()))
+for i in range(m):
+    ar = lis[lisn[i][0]-1:lisn[i][1]]
+    reached = False
+    flag = False;
+    for i in range(len(ar)-1):
+        if reached == False:
+            if ar[i] > ar[i+1]:
+                reached = True
+        if reached == True:
+            if ar[i] < ar[i+1]:
+                flag = True
+                print('No')
+                break
+    if (flag == False):
+        print('Yes')
