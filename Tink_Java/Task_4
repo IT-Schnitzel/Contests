@@ -1,0 +1,111 @@
+import java.io.Console;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String str = in.nextLine();
+        String [] s = str.split(" ");
+        int n = Integer.parseInt(s[0]);
+        int c = Integer.parseInt(s[1]);
+        int d = Integer.parseInt(s[2]);
+        String str2 = in.nextLine();
+        String [] s2 = str2.split(" ");
+        int [] arr = new int[s2.length];
+        for (int i = 0; i < arr.length; i ++)
+        {
+            arr[i] = Integer.parseInt(s2[i]);
+        }
+        boolean flag = true;
+        int min = 100000;
+        int index = -1;
+        for (int i = 0; i < arr.length; i ++)
+        {
+            if (arr[i] < min)
+            {
+                min = arr[i];
+                index = i;
+            }
+        }
+        int min1 = 10000;
+        int index1 = -1;
+        if (min == c*d)
+        {
+            arr[index] = 0;
+        }
+        else
+        {
+            if (min < c*d)
+            {
+                while (min > -1)
+                {
+                    min = min - d;
+                    c = c-1;
+                }
+                //System.out.println(min);
+                //System.out.println(c);
+                arr [index] = min;
+                while (c > 0)
+                {
+                    for (int i = 0; i < arr.length; i ++)
+                    {
+                        int r = -1;
+                        if (arr[i] < 0)
+                        {
+                            r = -arr[i];
+                        }
+                        else {
+                            r = arr[i];
+                        }
+                        if (r < min1)
+                        {
+                            min1 = arr[i];
+                            index1 = i;
+                        }
+                    }
+                    if (min1 < 0)
+                    {
+                        arr[index1] = min1 - d;
+                    }
+                    else
+                    {
+                        arr[index1] = min1 + d;
+                    }
+                    //System.out.println(min1);
+                    c = c-1;
+                    min1 = 10000;
+                    index1 = -1;
+                }
+            }
+            else
+            {
+                while (c > 0)
+                {
+                    for (int i = 0; i < arr.length; i ++)
+                    {
+                        if (arr[i] < min1)
+                        {
+                            min1 = arr[i];
+                            index1 = i;
+                        }
+                    }
+                    arr[index1] = min1 - d;
+                    c = c-1;
+                    min1 = 10000;
+                    index1 = -1;
+                }
+            }
+
+        }
+        String sw = "";
+        for (int i = 0; i < arr.length-1; i ++)
+        {
+            sw += arr[i] + " ";
+        }
+        sw += arr[arr.length-1];
+        System.out.println(sw);
+        
+    }
+}
