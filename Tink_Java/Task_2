@@ -1,0 +1,67 @@
+//#define _USE_MATH_DEFINES
+#include <algorithm>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int a, b;
+	cin >> a >> b;
+	string name;
+	cin >> name;
+	multiset<char> al;
+	for (int i = 0; i < name.size(); i++) {
+		al.insert(name[i]);
+	}
+	char c = '1';
+	int counter = 0;
+	int un = 0;
+
+	multiset<int> fin;
+	for (const char& let : al) {
+		if (let == c)
+		{
+			counter = counter + 1;
+		}
+		else
+		{
+			fin.insert(counter);
+			counter = 1;
+			c = let;
+		}
+		//cout << let << endl;
+		//cout << counter << endl;
+	}
+	multiset<int>::reverse_iterator v;
+	if (a < b)
+	{
+		cout << 0;
+	}
+	else
+	{
+		for (v = fin.rbegin(); v != fin.rend(); v++)
+		{
+			if (b >= *v)
+			{
+				b = b - *v;
+				un += 1;
+			}
+			if (b == 0)
+			{
+				break;
+			}
+			//cout << b << endl;
+			//cout << *v << endl;
+			//cout << un << endl;
+			//cout << endl;
+		}
+		cout << un << endl;
+	}
+	
+}
