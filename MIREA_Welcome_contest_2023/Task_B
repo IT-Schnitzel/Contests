@@ -1,0 +1,15 @@
+n = int(input())
+flag = 0
+for i in range (n):
+    a=int(input())
+    i = 2
+    while (i*i < a+1):
+        if (a%i == 0):
+            t = int(a/i)
+            print(t)
+            flag = 1
+            break
+        i = i+1
+    if (flag == 0):
+        print(1)
+    flag = 0
