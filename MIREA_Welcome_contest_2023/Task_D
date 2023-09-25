@@ -1,0 +1,35 @@
+def is_prime(num):
+    prime = num > 1 and (num % 2 != 0 or num == 2) and (num % 3 != 0 or num == 3)
+    i = 5;
+    d = 2;
+    while prime and i * i <= num:
+        prime = num % i != 0
+        i += d
+        d = 6 - d
+    return prime
+ 
+n = int(input())
+for i in range (0,n):
+    numb = int(input())
+    if (is_prime(numb)):
+        print (numb, numb)
+    else:
+        hi = numb+1
+        low = numb-1
+        flag = 0
+        f1 = 0
+        f2 = 0
+        while (flag != 2):
+            if (f1 == 0):
+                if (is_prime(hi)):
+                    f1 = hi
+                    flag = flag +1
+                else:
+                    hi = hi + 1
+            if (f2 == 0):
+                if (is_prime(low)):
+                    f2 = low
+                    flag = flag +1
+                else:
+                    low = low -1
+        print (low, hi)
