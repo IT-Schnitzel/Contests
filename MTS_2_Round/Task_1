@@ -1,0 +1,212 @@
+#include "iostream"
+#include <set>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+
+    string prefix;
+    cin >> prefix;
+    int f1 = stoi(prefix.substr(0,1));
+    int f2 = stoi(prefix.substr(1, 1));
+    int f3 = stoi(prefix.substr(2, 1));
+    int f4 = stoi(prefix.substr(3, 1));
+    //cout << f1 << endl;
+    //cout << f2 << endl;
+    //cout << f3 << endl;
+    //cout << f4 << endl;
+    switch (f4)
+    {
+        case 0:
+            if (f3 == 0)
+            {
+                cout << 1 << endl;
+            }
+            else
+            {
+                cout << 2 << endl;
+            }
+            break;
+        case 1:
+            if (f3 == 0 || f3 == 1)
+            {
+                cout << 1 << endl;
+            }
+            else
+            {
+                cout << 2 << endl;
+            }
+            break;
+        case 2:
+            if (f3 == 1 || f3 == 2)
+            {
+                cout << 1 << endl;
+            }
+            else
+            {
+                cout << 2 << endl;
+            }
+            break;
+        case 3:
+            if (f3 == 2)
+            {
+                if (f2 == 1)
+                {
+                    cout << 1 << endl;
+                }
+                else
+                {
+                    cout << 10 << endl;
+                }
+            }
+            else
+            {
+                cout << 1 << endl;
+            }
+            break;
+        case 4:
+            if (f3 == 3)
+            {
+                if (f2 == 2)
+                {
+                    if (f1 == 1)
+                    {
+                        cout << 1 << endl;
+                    }
+                    else
+                    {
+                        cout << 101 << endl;
+                    }
+                }
+                else
+                {
+                    cout << 1 << endl;
+                }
+            }
+            else
+            {
+                if (f3 == 5)
+                {
+                    if (f2 == 6)
+                    {
+                        if (f1 == 7)
+                        {
+                            cout << 1001 << endl;
+                        }
+                        else
+                        {
+                            cout << 1 << endl;
+                        }
+                    }
+                    else
+                    {
+                        cout << 1 << endl;
+                    }
+                }
+                else
+                {
+                    cout << 1 << endl;
+                }
+            }
+            break;
+        case 5:
+            if (f3 == 6)
+            {
+                if (f2 == 7)
+                {
+                    if (f1 == 8)
+                    {
+                        cout << 1 << endl;
+                    }
+                    else
+                    {
+                        cout << 101 << endl;
+                    }
+                }
+                else
+                {
+                    cout << 1 << endl;
+                }
+            }
+            else
+            {
+                if (f3 == 4)
+                {
+                    if (f2 == 3)
+                    {
+                        if (f1 == 2)
+                        {
+                            cout << 1001 << endl;
+                        }
+                        else
+                        {
+                            cout << 1 << endl;
+                        }
+                    }
+                    else
+                    {
+                        cout << 1 << endl;
+                    }
+                }
+                else
+                {
+                    cout << 1 << endl;
+                }
+            }
+            break;
+        case 6:
+            if (f3 == 7)
+            {
+                if (f2 == 8)
+                {
+                    cout << 1 << endl;
+                }
+                else
+                {
+                    cout << 11 << endl;
+                }
+            }
+            else
+            {
+                cout << 1 << endl;
+            }
+            break;
+        case 7:
+            if (f3 == 8 || f3 == 7)
+            {
+                cout << 1 << endl;
+            }
+            else
+            {
+                cout << 2 << endl;
+            }
+            break;
+        case 8:
+            if (f3 == 9 || f3 == 8)
+            {
+                cout << 1 << endl;
+            }
+            else
+            {
+                cout << 2 << endl;
+            }
+            break;
+        case 9:
+            if (f3 == 9)
+            {
+                cout << 1 << endl;
+            }
+            else
+            {
+                cout << 2 << endl;
+            }
+        default:
+            break;
+    }
+
+}
